@@ -1,12 +1,16 @@
 const express = require("express");
 const cors = require("cors");
+const corsOptions = {
+  origin: "https://buddy-masri.github.io/store/cart",
+  credentials: true,
+};
 const bodyparser = require("body-parser");
 
 const app = express();
 app.use(express.static("public"));
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
-app.use(cors({ origin: "https://buddy-masri.github.io/store/", credentials: true }));
+app.use(cors(corsOptions));
 
 const stripe = require("stripe")(
   "sk_test_51OEH94FzdGfXZ9Dk7PJMqu6VIaaCKHCoyuSGXzgpl7KbZfwgpWjaeFjR0ZSxwr7JDYZeNmZ3zJvs9cd8x6GPzcby007ff9Lkmi"
